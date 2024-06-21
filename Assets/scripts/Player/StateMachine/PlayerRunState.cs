@@ -1,12 +1,19 @@
 using UnityEngine;
 using UnityEngine.Windows;
+using Zenject;
 
 public class PlayerRunState : PlayerBaseState
 {
 	PlayerController controller;
 	PlayerInput input;
 
-	public override void EnterState(PlayerStateManager state)
+	//[Inject]
+ //   public void Construct(PlayerInput input)
+ //   {
+	//	this.input = input;
+ //   }
+
+    public override void EnterState(PlayerStateManager state)
 	{
 		Debug.Log("Run state in Town!");
 		controller = state.GetComponent<PlayerController>();

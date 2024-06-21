@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MonoBehaviour, IPlayerInput
 {
     private void Update()
     {
