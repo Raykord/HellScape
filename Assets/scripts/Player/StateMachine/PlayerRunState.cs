@@ -1,23 +1,18 @@
 using UnityEngine;
-using UnityEngine.Windows;
-using Zenject;
+
 
 public class PlayerRunState : PlayerBaseState
 {
 	PlayerController controller;
-	PlayerInput input;
+	IPlayerInput _input;
 
-	//[Inject]
- //   public void Construct(PlayerInput input)
- //   {
-	//	this.input = input;
- //   }
+	
 
-    public override void EnterState(PlayerStateManager state)
+	public override void EnterState(PlayerStateManager state)
 	{
 		Debug.Log("Run state in Town!");
-		controller = state.GetComponent<PlayerController>();
-		input = state.GetComponent<PlayerInput>();
+		controller = state.Controller;
+		_input = state.Input;
 	}
 	public override void UpdateState(PlayerStateManager state)
 	{
@@ -25,11 +20,11 @@ public class PlayerRunState : PlayerBaseState
 		{
 			state.SwitchState(state.attackEntryState);
 		}
-		else if (!input.isInput())
+		else if (!_input.isInput())
 		{
 			state.SwitchState(state.idleState);
 		}
-		else if(input.GetSpaceButton())
+		else if(_input.GetSpaceButton())
 		{
 			state.SwitchState(state.evadeState);
 		}

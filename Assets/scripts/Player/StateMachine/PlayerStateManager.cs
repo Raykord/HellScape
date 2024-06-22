@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -14,7 +13,18 @@ public class PlayerStateManager : MonoBehaviour
 	public PlayerEvadeState evadeState = new PlayerEvadeState();
     public PlayerTakeDamageState takeDamageState = new PlayerTakeDamageState();
 
-	public bool canEvade = true;
+    public IPlayerInput Input;
+    public PlayerController Controller;
+
+    [Inject]
+    public void Construct(IPlayerInput input, PlayerController controller)
+    {
+        Input = input;
+        Controller = controller;
+        Debug.LogWarning("INJECT IS SUCCESFUL");
+    }
+
+    public bool canEvade = true;
 	float timer = 0;
 
 	[SerializeField] float evadeCooldown = 2;

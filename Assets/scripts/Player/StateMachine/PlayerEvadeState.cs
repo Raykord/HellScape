@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerEvadeState : PlayerBaseState
 {
@@ -16,7 +14,7 @@ public class PlayerEvadeState : PlayerBaseState
 		//Логика на включение анимации
 		//state.gameObject.GetComponent<PlayerAnimator>().Idle();
 		echoEffect = state.GetComponent<EchoEffect>();
-		controller = state.GetComponent<PlayerController>();
+		controller = state.Controller;
 		
 	}
 	public override void UpdateState(PlayerStateManager state)

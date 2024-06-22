@@ -1,17 +1,16 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerIdleState : PlayerBaseState
 {
-	PlayerInput input;
+	IPlayerInput input;
 	PlayerController controller;
 	public override void EnterState(PlayerStateManager state)
 	{
 		Debug.Log("Idle state active");
 		//Логика на включение анимации
 		//state.gameObject.GetComponent<PlayerAnimator>().Idle();
-		input = state.GetComponent<PlayerInput>();
-		controller = state.GetComponent<PlayerController>();
+		input = state.Input;
+		controller = state.Controller;
 	}
 	public override void UpdateState(PlayerStateManager state)
 	{
